@@ -8,7 +8,7 @@ while True:
     dicio['nome'] = nome
     partidas = int(input(f'Quantas partidas {nome} jogou?'))
     for c in range(0, partidas):
-        lista.append(int(input(f' Quantos gols na partida {c}? ')))
+        lista.append(int(input(f' Quantos gols na partida {c+1}? ')))
     total = sum(lista)
     dicio['gols'] = lista[:]
     dicio['total'] = total
@@ -27,8 +27,12 @@ while True:
     perg = int(input('Mostrar dados de qual jogador? (999 interrompe)'))
     if perg == 999:
         break
+    if perg > len(lista2):
+        print(f'Não existe jogador número {perg}!')
     else:
-        print(lista2[perg['gols']])
+        print(f' DADOS DO JOGADOR: {lista2[perg]["nome"]}')
+        for i, g in enumerate(lista2[perg]['gols']):
+            print(f' Na partida {i+1} fez {g} gols.')
 print(f'<<< FIM! >>>')
 
 
